@@ -37,8 +37,7 @@ public class Main {
     // Конвертация только возможных значений, строку конвертировать в число невозможно
     private static int convertFromStringToInt(String stringNumber) {
         try {
-            int resultConvert = Integer.parseInt(stringNumber.trim());
-            return resultConvert;
+            return Integer.parseInt(stringNumber.trim());
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
@@ -48,8 +47,7 @@ public class Main {
     private static String getNumberFromFile(String fileName) throws FileNotFoundException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
         try {
-            String currentLine = bufferedReader.readLine();
-            return currentLine;
+            return bufferedReader.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
