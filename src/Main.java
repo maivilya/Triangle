@@ -9,24 +9,25 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        // Программа для чтения из файла
-        System.out.println(greeding());
-        String FILE = "src/number.txt";
-        String getNumber = getNumberFromFile(FILE);
-        int convertNumber = convertFromStringToInt(getNumber);
-        System.out.printf("И так, мы ищем %d-е треугольное число\n", convertNumber);
-        System.out.println("Происходит вычисление...");// хотел сделать в потоке метод thread.slip(),
-                                                       // чтобы был красивый вывод загрузки, но подумал, что рановато
-        int resultNumber = TriangleDigit(convertNumber);
-        System.out.printf("%d-e треугольное число = %d\n", convertNumber, resultNumber);
+        System.out.print("Choose 1 read from file, choose 2 if read from console: ");
+        int userSelect = scan.nextInt();
 
-        // Программа получения числа из консоли
-        /*System.out.println(greeding());
-        int resultNumber = getNumberTerminal();
-        System.out.printf("И так, вы ввели число %d\n", resultNumber);
-        System.out.println("Производится расчет...");
-        System.out.printf("%d-e треугольное число = %d\n", resultNumber, TriangleDigit(resultNumber));*/
-
+        if (userSelect == 1){
+            System.out.println(greeding());
+            String FILE = "src/number.txt";
+            String getNumber = getNumberFromFile(FILE);
+            int convertNumber = convertFromStringToInt(getNumber);
+            System.out.printf("И так, мы ищем %d-е треугольное число\n", convertNumber);
+            System.out.println("Происходит вычисление...");
+            int resultNumber = TriangleDigit(convertNumber);
+            System.out.printf("%d-e треугольное число = %d\n", convertNumber, resultNumber);
+        } else if (userSelect == 2) {
+            System.out.println(greeding());
+            int resultNumber = getNumberTerminal();
+            System.out.printf("И так, вы ввели число %d\n", resultNumber);
+            System.out.println("Производится расчет...");
+            System.out.printf("%d-e треугольное число = %d\n", resultNumber, TriangleDigit(resultNumber));
+        } else System.out.println("entered uncorect data");
     }
 
     private static int TriangleDigit(int number) {
@@ -34,7 +35,6 @@ public class Main {
     }
 
 
-    // Конвертация только возможных значений, строку конвертировать в число невозможно
     private static int convertFromStringToInt(String stringNumber) {
         try {
             return Integer.parseInt(stringNumber.trim());
